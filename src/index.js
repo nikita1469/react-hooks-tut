@@ -8,7 +8,7 @@ const App = () => {
 
    if(visible) {
       return (
-         <div>
+         <div style={{fontSize: '30px'}}>
             <button 
                onClick={() => setValue((v) => v + 1)}>+</button>
             <button
@@ -21,7 +21,7 @@ const App = () => {
    }
 }
 
-const PlanetInfo = ({id}) => {
+const usePlanetInfo = (id) => {
 
    const [ name, setName ] = useState(null)
 
@@ -35,6 +35,13 @@ const PlanetInfo = ({id}) => {
       return () => canceled = true
 
    }, [id])
+
+   return name
+}
+
+const PlanetInfo = ({id}) => {
+
+   const name = usePlanetInfo(id)
 
    return (
       <div>{id} - {name}</div>
